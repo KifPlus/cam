@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UAE Mortgage CAM — Production Underwriting Suite v100 · Diamond Edition</title>
-<meta name="description" content="UAE Mortgage CAM v105 Final Edition — production underwriting suite: 14 banks, 60+ test personas, CBUAE-aligned eligibility, offer letters, audit trail.">
+<meta name="description" content="UAE Mortgage CAM v106 Production Client — client-side underwriting suite: 14 banks, 60+ test personas, CBUAE-aligned eligibility, offer letters, audit trail.">
 <meta name="theme-color" content="#012A30">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
@@ -1505,6 +1505,14 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
 .v105-final-chip{display:inline-flex;align-items:center;gap:5px;font-size:8.5px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#40330A;background:linear-gradient(135deg,#E9D68F,#C9A227);border-radius:99px;padding:2.5px 9px;box-shadow:0 2px 8px rgba(201,162,39,.45)}
 @media print{.v105-ticker{display:none !important}}
 
+/* ================================================================
+   V106 PRODUCTION CLIENT - SURFACE TRIM
+   Backend-owned & QA-only surfaces are hidden at CSS level as a
+   guarantee, and removed from DOM by the trim layer.
+   ================================================================ */
+#v105Ticker,#v105MarketCard,#v105RateCard,#v102PolicyBtn{display:none !important}
+.v105-ticker,.v105-mkt-grid,#v102PolicyBtn{display:none !important}
+
 </style>
 </head>
 <body>
@@ -1518,7 +1526,7 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
       <div class="v100-diamond"><span>💎</span></div>
     </div>
     <div class="v100-splash-title">UAE Mortgage <span>CAM</span></div>
-    <div class="v100-splash-ver">v105 · Final Edition</div>
+    <div class="v100-splash-ver">v106 · Production Client</div>
     <div class="v100-splash-bar"><div class="v100-splash-fill" id="v100SplashFill"></div></div>
     <div class="v100-splash-status" id="v100SplashStatus">Booting underwriting engine…</div>
   </div>
@@ -1539,13 +1547,12 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
     <div class="logo">CAM</div>
     <div class="side-brand-txt">
       <strong>UAE Mortgage CAM</strong>
-      <span class="v100-chip">💎 v105 Final</span>
+      <span class="v100-chip">💎 v106 Client</span>
     </div>
   </div>
   <nav class="tab-nav" id="tabNav">
     <div class="nav-group-label">Overview</div>
     <button class="tab-btn active" data-tab="dashboard"><span class="tb-ico">📊</span> <span class="tb-lbl">Dashboard</span> <span class="badge muted" id="caseCountBadge">0</span></button>
-    <button class="tab-btn" data-tab="testlab"><span class="tb-ico">🧪</span> <span class="tb-lbl">Test Lab</span> <span class="badge lab">60+</span></button>
     <div class="nav-group-label">Underwrite</div>
     <button class="tab-btn" data-tab="newcase"><span class="tb-ico">➕</span> <span class="tb-lbl">New Case</span></button>
     <button class="tab-btn" data-tab="finder"><span class="tb-ico">🎯</span> <span class="tb-lbl">Product Finder</span></button>
@@ -1575,12 +1582,11 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
     <div class="nav-group-label">Reference</div>
     <button class="tab-btn" data-tab="ratesheet"><span class="tb-ico">📑</span> <span class="tb-lbl">Bank Rate Sheet</span></button>
     <button class="tab-btn" data-tab="tools"><span class="tb-ico">🛠</span> <span class="tb-lbl">Quick Tools</span></button>
-    <button class="tab-btn" data-tab="integrations"><span class="tb-ico">🔌</span> <span class="tb-lbl">Integration Hub</span></button>
     <button class="tab-btn" data-tab="commission"><span class="tb-ico">💰</span> <span class="tb-lbl">Commission</span></button>
   </nav>
   <div class="side-foot">
     <button class="side-kbd" onclick="v7openCmd()" title="Open command palette">⚡ Command Palette <kbd>⌘K</kbd></button>
-    <div class="side-ver">💎 v105 Final Edition · <a href="#" onclick="v7openHelp();return false;">shortcuts ?</a></div>
+    <div class="side-ver">💎 v106 Production Client · <a href="#" onclick="v7openHelp();return false;">shortcuts ?</a></div>
   </div>
 </aside>
 
@@ -1593,7 +1599,7 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
       <div class="crumb">
         <span class="crumb-root">Workspace</span><span class="crumb-sep">›</span><span class="crumb-cur" id="v100Crumb">Dashboard</span>
       </div>
-      <h1 class="v100-sr">UAE Mortgage CAM — Production Underwriting Suite v105 Final Edition</h1>
+      <h1 class="v100-sr">UAE Mortgage CAM — Production Underwriting Suite v106 Production Client</h1>
     </div>
     <button class="search-trigger" onclick="v7openCmd()" title="Search tabs, cases & actions (Ctrl/⌘+K)">
       <span>🔍</span><span class="st-txt">Search tabs, cases, actions…</span><kbd>⌘K</kbd>
@@ -1653,95 +1659,6 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
 </section>
 
 <!-- ============================================================ v6: TEST LAB ============================================================ -->
-<section class="tab-panel" id="testlab">
-  <div class="test-lab-header">
-    <h2>🧪 Underwriting Test Lab — 60+ Real UAE Customer Personas</h2>
-    <p>Pre-built scenarios covering every borrower type, income level, property type, bank policy, and edge case. Click any persona to load it. Or run the full validation suite — every case is auto-tested against expected CBUAE outcomes.</p>
-  </div>
-
-  <div class="test-lab-stats" id="testLabStats">
-    <div class="test-lab-stat"><div class="label">Total Personas</div><div class="value" id="tl-total">0</div></div>
-    <div class="test-lab-stat pass"><div class="label">Expected Pass</div><div class="value" id="tl-pass">0</div></div>
-    <div class="test-lab-stat warn"><div class="label">Expected Conditional</div><div class="value" id="tl-warn">0</div></div>
-    <div class="test-lab-stat fail"><div class="label">Expected Fail</div><div class="value" id="tl-fail">0</div></div>
-    <div class="test-lab-stat"><div class="label">Categories</div><div class="value" id="tl-cats">0</div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h2>🏃 Bulk Validation Harness</h2>
-      <span class="hint">Runs every persona through the engine and validates output vs expected</span>
-    </div>
-    <div class="card-body">
-      <div class="btn-row tight" style="margin-bottom:14px">
-        <button class="btn btn-primary" onclick="runAllTests()">▶ Run Full Test Suite (60 personas)</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('salaried')">👔 Salaried Only</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('self_employed')">💼 Self-Employed</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('non_resident')">✈ Non-Resident</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('offplan')">🏗 Off-Plan</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('islamic')">🕌 Islamic</button>
-        <button class="btn btn-secondary" onclick="runCategoryTests('edge')">⚠ Edge Cases</button>
-        <button class="btn btn-secondary" onclick="clearTestResults()">🗑 Clear Results</button>
-      </div>
-      <div id="testResultsSummary"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h2>📋 Persona Library</h2>
-      <span class="hint">Click any card to load it as an active case · tested scenarios show validation badge</span>
-    </div>
-    <div class="card-body">
-      <div class="form-grid three" style="margin-bottom:14px">
-        <div class="field"><label>Filter by Category</label>
-          <select id="personaFilterCategory" onchange="renderPersonaGrid()">
-            <option value="all">All Categories</option>
-            <option value="salaried">Salaried (Expat &amp; National)</option>
-            <option value="self_employed">Self-Employed</option>
-            <option value="non_resident">Non-Resident</option>
-            <option value="offplan">Off-Plan</option>
-            <option value="islamic">Islamic Finance</option>
-            <option value="commercial">Commercial</option>
-            <option value="edge">Edge Cases / Boundary</option>
-            <option value="coApplicant">With Co-Applicant</option>
-            <option value="age">Age / Tenure Boundary</option>
-          </select>
-        </div>
-        <div class="field"><label>Filter by Expected Verdict</label>
-          <select id="personaFilterVerdict" onchange="renderPersonaGrid()">
-            <option value="all">All Verdicts</option>
-            <option value="pass">Eligible (Pass)</option>
-            <option value="warn">Conditional</option>
-            <option value="fail">Decline</option>
-          </select>
-        </div>
-        <div class="field"><label>Search</label>
-          <input type="text" id="personaSearch" placeholder="Search by name or description…" oninput="renderPersonaGrid()">
-        </div>
-      </div>
-      <div class="persona-grid" id="personaGrid"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header"><h2>📊 Last Test Run — Detailed Results</h2><span class="hint" id="testRunLabel">No tests run yet</span></div>
-    <div class="card-body" style="padding:0; overflow-x:auto">
-      <table class="test-results-table" id="testResultsTable">
-        <thead><tr>
-          <th>#</th><th>Persona</th><th>Category</th>
-          <th>Expected</th><th>Got</th><th>Result</th>
-          <th class="num">Income</th><th class="num">Loan</th>
-          <th class="num">DBR</th><th class="num">LTV</th>
-          <th>Notes</th>
-        </tr></thead>
-        <tbody id="testResultsBody">
-          <tr><td colspan="11" style="text-align:center;padding:30px;color:var(--ink-500)">Run the test suite to see results</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================ NEW CASE ============================================================ -->
 <section class="tab-panel" id="newcase">
@@ -2586,72 +2503,6 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
 </section>
 
 <!-- ============================================================ V102 · INTEGRATION HUB ============================================================ -->
-<section class="tab-panel" id="integrations">
-  <div class="help-note info"><strong>🔌 Integration Hub:</strong> Enterprise connectors, bureau import, feed governance and API surface. Feeds are simulated locally — swap the transport layer for live endpoints in production.</div>
-  <div class="v102-int-grid">
-    <div>
-      <div class="card">
-        <div class="card-header"><h2>📡 Connected Feeds</h2><span class="hint" id="v102FeedHint">0 syncs today</span></div>
-        <div class="card-body">
-          <div class="v102-feed"><div class="fi">🏦</div><div class="fm"><b>Bank Rate Sheet Sync</b><small id="v102RateSyncLbl">Never synced — rates are shipped defaults</small></div><button class="btn btn-sm btn-secondary" onclick="v102SyncRates()">⟳ Sync now</button><span class="v102-dot idle" id="v102RateDot"></span></div>
-          <div class="v102-feed"><div class="fi">🧾</div><div class="fm"><b>AECB Bureau Import</b><small>Paste a bureau JSON/CSV payload to attach score &amp; markers to the active case</small></div><span class="v102-dot live"></span></div>
-          <div class="v102-feed"><div class="fi">🗺</div><div class="fm"><b>DLD / Valuation Feed</b><small>Emirate duty tables &amp; trustee fees (built-in, versioned)</small></div><span class="v102-dot live"></span></div>
-          <div class="v102-feed"><div class="fi">✉️</div><div class="fm"><b>Webhook Egress</b><small id="v102HookLbl">case.saved · case.stage · verdict.* — logging to event stream</small></div><span class="v102-dot live"></span></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><h2>🧾 Bureau Import</h2><span class="hint">Applies to the active case</span></div>
-        <div class="card-body">
-          <textarea id="v102BureauIn" rows="5" spellcheck="false" placeholder='{"score":712,"markers":["cc_return_2023"]}  or  712, cc_return_2023' style="width:100%;font-family:var(--font-mono);font-size:11.5px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink-900)"></textarea>
-          <div class="btn-row tight">
-            <button class="btn btn-primary" onclick="v102ImportBureau()">⬇ Import to case</button>
-            <button class="btn btn-secondary" onclick="document.getElementById('v102BureauIn').value='';toast('Cleared','success')">Clear</button>
-          </div>
-          <div id="v102BureauRes" style="margin-top:10px"></div>
-          <p class="v7-note">Imported score seeds the Risk DNA bureau simulator and is stamped into the CAM pack §7 with source &amp; timestamp.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><h2>🔑 API Keys</h2><span class="hint">Local demo credentials</span></div>
-        <div class="card-body">
-          <div id="v102Keys"></div>
-          <button class="btn btn-secondary btn-sm" onclick="v102NewKey()">＋ Issue key</button>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <div class="card-header"><h2>🕘 Event Stream</h2><span class="hint">Last 30 webhook-able events</span></div>
-        <div class="card-body" style="max-height:300px;overflow-y:auto"><div id="v102Events"></div></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><h2>📚 API Schema</h2><span class="hint">POST /v1/cases/evaluate</span></div>
-        <div class="card-body"><div class="v102-code">{
-  "borrower": { "type": "salaried_expat", "income_aed": 62000,
-                "existing_emi_aed": 6000, "age": 41 },
-  "property": { "value_aed": 2500000, "emirate": "dubai",
-                "status": "ready", "sequence": "first" },
-  "facility": { "amount_aed": 1900000, "tenure_y": 24,
-                "bank": "ENBD" }
-}
-→ 200 { "verdict": "pass", "dbr_pct": 26.57, "ltv_pct": 76.0,
-        "risk_score": 756, "grade": "B+",
-        "conditions": [ … ], "cash_at_closing_aed": 721180 }</div>
-        <p class="v7-note">Every calculation in this suite is deterministic and stateless — the same contract powers the UI, the CAM pack and batch runs.</p></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><h2>🏷 White-label &amp; Workspace</h2><span class="hint">Admin only</span></div>
-        <div class="card-body">
-          <div class="v102-set-row"><label>Firm name</label><input type="text" id="v102Firm" placeholder="UAE Mortgage CAM"></div>
-          <div class="v102-set-row"><label>Accent colour</label><input type="color" id="v102Accent" value="#007377"><button class="btn btn-sm btn-secondary" onclick="v102ResetAccent()">Reset</button></div>
-          <div class="v102-set-row"><label>Vault encryption</label><span id="v102VaultLbl" style="flex:1;color:var(--ink-500);font-size:11.5px">Off — cases stored in plain local storage</span><button class="btn btn-sm btn-primary" id="v102VaultBtn" onclick="v102VaultToggle()">Enable</button></div>
-          <div class="v102-set-row"><label>Auto-lock</label><span style="flex:1;color:var(--ink-500);font-size:11.5px">15 minutes of inactivity when vault is on</span></div>
-          <div class="btn-row tight"><button class="btn btn-primary btn-sm" onclick="v102SaveFirm()">Save branding</button></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================ V103 · BROKER HUB ============================================================ -->
 <section class="tab-panel" id="hub">
@@ -2762,7 +2613,7 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
   <div class="v7-cmd-box">
     <div class="v7-cmd-head"><span class="v7-cmd-kbd">⌘K</span><input type="text" id="v7cmdInput" placeholder="Search tabs, cases, actions… (↑↓ to navigate, Enter to run)" autocomplete="off" spellcheck="false"><button class="v7-x" onclick="v7closeCmd()" aria-label="Close">✕</button></div>
     <div class="v7-cmd-list" id="v7cmdList"></div>
-    <div class="v7-cmd-foot"><span>↑↓ navigate</span><span>↵ run</span><span>esc close</span><span class="v7-cmd-brand">v105 💎</span></div>
+    <div class="v7-cmd-foot"><span>↑↓ navigate</span><span>↵ run</span><span>esc close</span><span class="v7-cmd-brand">v106 💎</span></div>
   </div>
 </div>
 
@@ -2791,7 +2642,7 @@ table.data td.v104-selcell input{width:15px;height:15px;accent-color:var(--teal-
 
 <div class="v7-modal-overlay" id="v7newModal" role="dialog" aria-label="What's new in v7">
   <div class="v7-modal">
-    <div class="v7-modal-head"><h3>💎 What's New in v105 — Final Edition</h3><button class="v7-x" onclick="v7closeModal('v7newModal')" aria-label="Close">✕</button></div>
+    <div class="v7-modal-head"><h3>💎 What's New in v106 — Production Client</h3><button class="v7-x" onclick="v7closeModal('v7newModal')" aria-label="Close">✕</button></div>
     <div class="v7-modal-body">
       <div class="v7-new-grid">
         <div class="v7-new-item"><span>📠</span><div><strong>Rate Ticker Tape</strong><br>TradingView-style animated tape under the deal strip: all 13 lenders with rate + bps movement after every feed sync, plus CBUAE cap, DLD and indicative EIBOR. Pauses on hover.</div></div>
@@ -4513,7 +4364,7 @@ exportExcel = function(){
     const cid = d.caseId||'case';
     const rowsA = Object.keys(d).filter(k=>!/^_/.test(k) && k!=='checklistState').map(k=>[k, typeof d[k]==='boolean'?(d[k]?'Yes':'No'):d[k]]);
     let html = '<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Case</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body>';
-    html += '<h2>UAE Mortgage CAM v105 — Case Report: '+v7esc(cid)+'</h2>';
+    html += '<h2>UAE Mortgage CAM v106 — Case Report: '+v7esc(cid)+'</h2>';
     html += '<h3>Case Data</h3><table border="1"><tr><th>Field</th><th>Value</th></tr>'+rowsA.map(r=>'<tr><td>'+v7esc(r[0])+'</td><td>'+v7esc(r[1])+'</td></tr>').join('')+'</table>';
     html += '<h3>Financial Summary</h3><table border="1"><tr><th>Metric</th><th>Value</th></tr>'
       + '<tr><td>Gross Monthly Income (AED)</td><td>'+Math.round(full.grossIncome)+'</td></tr>'
@@ -5227,7 +5078,7 @@ setTimeout(v7boot, 0);
   runAllTools();
   calcCommercial();
   if(checkPortalMode()) return;
-  if(state.cases.length===0) goToTab('testlab');
+  if(state.cases.length===0) goToTab('dashboard');
   else goToTab('dashboard');
 })();
 </script>
@@ -5280,8 +5131,8 @@ setTimeout(v7boot, 0);
     setTimeout(tryHide,2600); /* hard fallback */
   }
   function v100Welcome(){
-    if(lsGet('seen_v105',false))return;
-    lsSet('seen_v105',true);
+    if(lsGet('seen_v106',false))return;
+    lsSet('seen_v106',true);
     try{ if(typeof v7openModal==='function') v7openModal('v7newModal'); }catch(e){}
   }
 
@@ -5293,7 +5144,7 @@ setTimeout(v7boot, 0);
   function setCrumb(tab){
     var c=$('v100Crumb'); var name=CRUMB[tab]||tab;
     if(c)c.textContent=name;
-    d.title=name+' · UAE Mortgage CAM v105';
+    d.title=name+' · UAE Mortgage CAM v106';
   }
   if(typeof w.goToTab==='function'){
     var _goToTab=w.goToTab;
@@ -5465,7 +5316,7 @@ setTimeout(v7boot, 0);
     try{
       if(typeof state!=='undefined'&&state&&state.cases&&state.cases.length===0&&!lsGet('nudged',false)){
         lsSet('nudged',true);
-        if(typeof toast==='function')toast('💎 v105 tip: press ⌘K (or Ctrl+K) for the command palette','');
+        if(typeof toast==='function')toast('💎 v106 tip: press ⌘K (or Ctrl+K) for the command palette','');
       }
     }catch(e){}
   },3400);
@@ -7769,6 +7620,83 @@ setTimeout(v7boot, 0);
     var chip=d.createElement('span'); chip.className='v105-final-chip'; chip.textContent='FINAL';
     sv.insertBefore(chip,sv.firstChild);
   }
+})();
+
+</script>
+<script>
+/* ================================================================
+   V106 PRODUCTION CLIENT - TRIM LAYER
+   Removes QA-only and backend-owned surfaces from the client:
+   Test Lab harness, Integration Hub (feeds/keys/webhooks/schema),
+   bureau import, policy override button, synthetic ticker /
+   market index / rate history, persona loaders, first-run
+   feature-tour modal. Everything client-side & client-owned
+   (underwriting, risk, docs, broker office, vault, exports)
+   remains.
+   ================================================================ */
+(function v106boot(){
+  'use strict';
+  var d=document,w=window;
+  try{ if(new URLSearchParams(location.search).has('portal')) return; }catch(e){}
+  var REMOVED_TABS=['testlab','integrations'];
+
+  /* 1. suppress first-run feature tour (production onboarding is the app itself) */
+  try{ localStorage.setItem('uaeCAM_v100_seen_v106','true'); }catch(e){}
+  try{ localStorage.setItem('uaeCAM_v100_seen_v105','true'); }catch(e){}
+
+  /* 2. DOM trims */
+  function trimDom(){
+    var n;
+    if((n=$('v105Ticker')))n.remove();
+    if((n=$('v105MarketCard')))n.remove();
+    if((n=$('v105RateCard')))n.remove();
+    if((n=$('v102PolicyBtn')))n.remove();
+    d.querySelectorAll('[onclick*="loadAllPersonas"]').forEach(function(b){b.remove();});
+    d.querySelectorAll('[onclick*="runAllTests"]').forEach(function(b){b.remove();});
+    var es=d.querySelector('#emptyState p');
+    if(es)es.textContent='Create your first case, or import a backup (⌘K → Backup) to get started.';
+    var hint=d.querySelector('#emptyState h3');
+    if(hint)hint.textContent='No cases yet';
+  }
+
+  /* 3. palette: drop QA-only actions */
+  if(typeof w.v7actionItems==='function'){
+    var _ai=w.v7actionItems;
+    w.v7actionItems=function(){
+      return _ai().filter(function(it){
+        return !/test suite|persona|test lab|run full test/i.test(it.label||'');
+      });
+    };
+  }
+
+  /* 4. navigation guard: removed tabs fall back to Dashboard */
+  if(typeof w.goToTab==='function'){
+    var _gt=w.goToTab;
+    w.goToTab=function(t){
+      if(REMOVED_TABS.indexOf(t)>=0)t='dashboard';
+      var r=_gt(t);
+      try{ trimDom(); }catch(e){}
+      return r;
+    };
+  }
+  if(typeof w.renderDashboard==='function'){
+    var _rd=w.renderDashboard;
+    w.renderDashboard=function(){ var r=_rd(); try{ trimDom(); }catch(e){} return r; };
+  }
+
+  /* 5. boot: fix initial tab when engine defaulted to the removed Test Lab */
+  try{
+    var active=d.querySelector('.tab-panel.active');
+    if(!active||REMOVED_TABS.indexOf(state.activeTab)>=0){ _safeDash(); }
+  }catch(e){ _safeDash(); }
+  function _safeDash(){ try{ w.goToTab('dashboard'); }catch(e){} }
+
+  /* 6. production console badge */
+  try{
+    console.info('%c UAE Mortgage CAM %c v106 Production Client ','background:#00737A;color:#fff;border-radius:3px 0 0 3px;font-weight:700','background:#012A30;color:#9fdfe3;border-radius:0 3px 3px 0');
+  }catch(e){}
+
+  trimDom();
 })();
 
 </script>
